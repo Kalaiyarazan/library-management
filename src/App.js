@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+import "bootstrap/dist/css/bootstrap.min.css";
+import {Switch, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import BookList from './components/BookList'
 import Details from './components/Details'
@@ -10,10 +12,13 @@ class App extends Component {
     return (
       <Fragment>
           <Navbar/>
-          <BookList/>
-          <Details/>
-          <Cart/>
-          <Default/>
+          <Switch> 
+            <Route exact path="/" component={BookList}/>
+            <Route path="/details" component={Details}/>
+            <Route path="/cart" component={Cart}/>
+            <Route component={Default}/>
+            <Default/>
+          </Switch>
       </Fragment>
     )
   }
