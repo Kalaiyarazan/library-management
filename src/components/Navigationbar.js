@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import {
-    Navbar,
-    NavbarBrand,
-    Nav} from 'reactstrap';
+import {Navbar,NavbarBrand,Nav} from 'reactstrap';
 
 class Navigationbar extends Component {
       render() {
