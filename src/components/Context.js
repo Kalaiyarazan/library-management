@@ -28,12 +28,20 @@ state = {
           }
           )
     }
+    onSearch=(e)=>{
+        const search=e.target.value
+        console.log(search) 
+        const searchedBooks=this.state.books.filter(book=>{
+            return book.id==search || book.author==search
+        })
+        this.setState({books:searchedBooks})
+    }
     
     render() {
         const{books}=this.state
         // console.log(books)
         return (
-            <BookContext.Provider value={books}>
+            <BookContext.Provider value={{books,onSearch:this.onSearch}}>
                 {this.props.children}
             </BookContext.Provider>
         )

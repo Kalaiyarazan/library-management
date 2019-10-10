@@ -59,7 +59,7 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
                     </>
                         :
                     <>
-                        <Button color="danger">Not Available</Button>
+                        <Button color="danger">Borrowed</Button>
                         <Button color="primary" onClick={this.toggle}>Continue</Button>
                         <Button color="warning" className="disabled">Add to Cart</Button>
                     </>

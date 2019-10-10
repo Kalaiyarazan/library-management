@@ -5,19 +5,30 @@ import { BookConsumer } from './Context'
 
 class BookList extends Component {
     state={
-        Books:[]
+        searchedBooks:[]
     }
+
     render() {
         return (
             <Fragment>
                 <Container>
+                    <br/>
                 <Row>
-                 <Col sm="12" md={{ size: 6, offset: 3 }} style={{textAlign:"center", fontSize:"50px"}}>Search All Books</Col>
+                 <Col sm="12" md={{ size: 6, offset: 3 }} style={{textAlign:"center", fontSize:"20px"}}>
+                 <BookConsumer>
+                    {(value=>{
+                        return <>
+                            <h3>Search Books</h3>
+                            <input type="text" onChange={value.onSearch}/>
+                            </>
+                    })}
+                    </BookConsumer>
+                 </Col>
                 </Row>
                 <BookConsumer>
-                    {(value=>{
-                        console.log(value)
-                        return value.map(book=>{
+                    {(value=>{  
+                        console.log("From BookList Context:",{value})
+                        return value.books.map(book=>{
                             return <Book key={book.id} book={book}/>
                         })
                         }
