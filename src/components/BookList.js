@@ -13,6 +13,7 @@ class BookList extends Component {
     }
 
     render() {
+        const {search}=this.state
         return (
             <Fragment>
                 <Container>
@@ -23,22 +24,21 @@ class BookList extends Component {
                             <input type="text" onChange={this.onSearch}/>
                  </Col>
                 </Row>
+
                 <BookConsumer>
-                    {(value=>{  
-                        
+                    {(value=>{                          
                         let filteredBooks=value.books.filter(book=>{
-                             return book.id==this.state.search || book.isAvailable==this.state.search
+                             return book.title.toLowerCase().includes(search.toLowerCase()) || 
+                                    book.author.toLowerCase().includes(search.toLowerCase()) || 
+                                    book.genre.toLowerCase().includes(search.toLowerCase()) ||
+                                    book.yearofpublication.toString().includes(search.toString()) ||    
+                                    !search
                         })
                         console.log("From BookList Context:",{filteredBooks})
                         console.log(filteredBooks.length)
-                        filteredBooks.length?
-                        filteredBooks.map(book=>{
+                        return filteredBooks.map(book=>{
                             return <Book key={book.id} book={book}/>
-                        })
-                        :
-                        value.books.map(book=>{
-                            return <Book key={book.id} book={book}/>
-                        })                  
+                        })                 
                         }
                         )}
                 </BookConsumer>
