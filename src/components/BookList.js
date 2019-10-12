@@ -28,16 +28,14 @@ class BookList extends Component {
                 <BookConsumer>
                     {(value=>{                          
                         let filteredBooks=value.books.filter(book=>{
-                             return book.title.toLowerCase().includes(search.toLowerCase()) || 
-                                    book.author.toLowerCase().includes(search.toLowerCase()) || 
-                                    book.genre.toLowerCase().includes(search.toLowerCase()) ||
-                                    book.yearofpublication.toString().includes(search.toString()) ||    
-                                    !search
+                                          return book.title.toLowerCase().includes(search.toLowerCase()) || 
+                                                  book.author.toLowerCase().includes(search.toLowerCase()) || 
+                                                  book.genre.toLowerCase().includes(search.toLowerCase()) ||
+                                                  book.yearofpublication.toString().includes(search.toString()) ||    
+                                                  !search
                         })
-                        console.log("From BookList Context:",{filteredBooks})
-                        console.log(filteredBooks.length)
                         return filteredBooks.map(book=>{
-                            return <Book key={book.id} book={book}/>
+                            return <Book key={book.id} book={book} isInCart={value.isInCart} addtoCart={value.addtoCart}/>
                         })                 
                         }
                         )}

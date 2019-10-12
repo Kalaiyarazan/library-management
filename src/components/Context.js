@@ -7,7 +7,9 @@ const BookContext = React.createContext()
 class BookProvider extends Component {
 state = {
             books:[],
-            isLoaded:false
+            isLoaded:false,
+            cartItems:[],
+            isInCart:false
         }
 
     componentDidMount(){
@@ -28,12 +30,24 @@ state = {
           }
           )
     }
+
+    onAddCart=(book)=>{
+        this.setState(prevState=>({cartItems:[...this.state.cartItems,book], isInCart: !prevState.isInCart}));
+         
+    }
+
+
+    onRemoveCart=(id)=>{
+        console.log("Removed", id)
+        const cartItems=this.state.cartItems.filter(cartItem=>cartItem.id !==id);
+        this.setState({cartItems:cartItems})
+         
+    }
     
     render() {
-        const{books}=this.state
-        // console.log(books)
+        console.log(this.state.books)
         return (
-            <BookContext.Provider value={{books}}>
+            <BookContext.Provider value={{...this.state,addtoCart:this.onAddCart, removeCart:this.onRemoveCart}}>
                 {this.props.children}
             </BookContext.Provider>
         )

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 
   class Book extends Component {
       state={
         modal: false,
         isAvailable:true,
-        isInCart:false
       }
 
       toggle=()=> {
@@ -13,16 +13,10 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
           modal: !prevState.modal
         }));
     }
-
-    onAddCart=()=>{
-        this.setState(prevState => ({
-            isInCart: !prevState.isInCart
-          }));
-    }
     
     render() {
         const {id,title, author, genre, yearofpublication}=this.props.book
-        const {modal, isAvailable, isInCart}= this.state
+        const {modal, isAvailable}= this.state
         return (               
             <div >
                 <img src="http://tiny.cc/kc34dz" alt="book_thumbnail" width="150" />
@@ -51,10 +45,12 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
                     <>
                         <Button color="success">Available</Button>
                         <Button color="primary" onClick={this.toggle}>Continue</Button>
-                            {isInCart?
-                                <Button color="warning" onClick={this.onAddCart}>Add to Cart</Button>
+                            {this.props.isInCart?
+                                <Link to="/cart">
+                                <Button color="warning">Check Out</Button>
+                                </Link>
                                 :
-                                <Button color="warning" onClick={this.onAddCart}>Added to Cart</Button>
+                                <Button color="warning" onClick={()=>this.props.addtoCart(this.props.book)}>Add to Cart</Button>
                             }
                     </>
                         :
