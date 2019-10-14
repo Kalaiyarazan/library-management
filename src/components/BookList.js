@@ -35,7 +35,7 @@ class BookList extends Component {
                                                   !search
                         })
                         return filteredBooks.map(book=>{
-                            return <Book key={book.id} book={book} isInCart={value.isInCart} addtoCart={value.addtoCart}/>
+                            return <Book key={book.id} book={book} cartItems={value.cartItems} addtoCart={value.addtoCart}/>
                         })                 
                         }
                         )}

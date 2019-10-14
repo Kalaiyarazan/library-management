@@ -30,6 +30,7 @@ export class Cart extends Component {
                     })}
 
                 </BookConsumer>
+                <button type="button" class="btn btn-primary">Check Out</button>
             </div>
             </div>
         )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter,Alert} from 'reactstrap'
 
   class Book extends Component {
       state={
@@ -15,8 +15,9 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
     }
     
     render() {
-        const {id,title, author, genre, yearofpublication}=this.props.book
+        const {id,title, author, genre, yearofpublication, isInCart}=this.props.book
         const {modal, isAvailable}= this.state
+        console.log(isInCart)
         return (               
             <div >
                 <img src="http://tiny.cc/kc34dz" alt="book_thumbnail" width="150" />
@@ -38,19 +39,27 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
                     <p><em>Genre: {genre}</em></p>
                     <p><em>Published on: {yearofpublication}</em></p>
                     <strong>Short Introduction: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {/* <Alert variant="primary">You can add {3-this.props.cartItems.length} books to cart</Alert> */}
                     </div>
+                    
                 </ModalBody>
-                <ModalFooter>
+                <ModalFooter style={{justifyContent:"center"}}>
                     {isAvailable?
                     <>
                         <Button color="success">Available</Button>
                         <Button color="primary" onClick={this.toggle}>Continue</Button>
-                            {this.props.isInCart?
+
+                            {isInCart ===true? (
                                 <Link to="/cart">
-                                <Button color="warning">Check Out</Button>
-                                </Link>
+                                <Button color="warning">Check Out ({this.props.cartItems.length})</Button>
+                                </Link>)
                                 :
-                                <Button color="warning" onClick={()=>this.props.addtoCart(this.props.book)}>Add to Cart</Button>
+                                (this.props.cartItems.length<3 ? 
+                                <Button color="warning" onClick={()=>this.props.addtoCart(this.props.book)}> Add to Cart </Button>
+                                : 
+                                <Link to="/cart">
+                                <Button color="warning">Clear Cart ({this.props.cartItems.length})</Button>
+                                </Link>)
                             }
                     </>
                         :

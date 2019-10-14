@@ -8,12 +8,11 @@ class BookProvider extends Component {
 state = {
             books:[],
             isLoaded:false,
-            cartItems:[],
-            isInCart:false
+            cartItems:[]
         }
 
     componentDidMount(){
-        fetch("https://my.api.mockaroo.com/books.json?key=edc7ab90")
+        fetch("https://api.myjson.com/bins/1eeg2m")
         .then(res=>res.json())
         .then(data=>{
             this.setState({
@@ -32,7 +31,10 @@ state = {
     }
 
     onAddCart=(book)=>{
-        this.setState(prevState=>({cartItems:[...this.state.cartItems,book], isInCart: !prevState.isInCart}));
+        book.isInCart = true;
+        const cartItem=this.state.cartItems.find(cartItem=>cartItem.id===book.id)
+        !cartItem && this.setState(({cartItems:[...this.state.cartItems,book]}));
+        
          
     }
 
