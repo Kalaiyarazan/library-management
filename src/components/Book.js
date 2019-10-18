@@ -15,8 +15,8 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter,Alert} from 'reactstr
     }
     
     render() {
-        const {id,title, author, genre, yearofpublication, isInCart}=this.props.book
-        const {modal, isAvailable}= this.state
+        const {id,title, author, genre, yearofpublication, isInCart, isAvailable,returnDate}=this.props.book
+        const {modal}= this.state
         console.log(isInCart)
         return (               
             <div >
@@ -64,7 +64,7 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter,Alert} from 'reactstr
                     </>
                         :
                     <>
-                        <Button color="danger">Borrowed</Button>
+                        <Button color="danger">Borrowed (E.T.A : {returnDate})</Button>
                         <Button color="primary" onClick={this.toggle}>Continue</Button>
                         <Button color="warning" className="disabled">Add to Cart</Button>
                     </>

@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { BookConsumer } from './Context'
+import {Link} from 'react-router-dom'
 import CartList from './CartList'
 
 export class Cart extends Component {
     render() {
         return (
             <div>
-                <h2>Books in Your Cart</h2>
+                <br/>
+                <h2 style={{textAlign:"center"}}>Books in Your Cart</h2>
                 <br/><br/>
                 <div class="container">
                 <div class="row">
@@ -28,9 +30,17 @@ export class Cart extends Component {
                             return <CartList key={cartItem.id} index={index} removeCart={value.removeCart} cartItem={cartItem}/>
                         })
                     })}
-
-                </BookConsumer>
-                <button type="button" class="btn btn-primary">Check Out</button>
+                     </BookConsumer>
+                     <BookConsumer>
+                     {(value=>{
+                        return value.cartItems.length===0 ? "Cart is Empty! Add some books..." : (<Link to="/Checkout"> 
+                            <button type="button" class="btn btn-primary" onClick={()=>value.checkOut(value.cartItems)}> 
+                            Check Out  </button> </Link>)
+                    })}
+                     </BookConsumer>
+                     
+               
+                
             </div>
             </div>
         )
