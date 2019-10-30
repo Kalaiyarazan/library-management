@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/library-management/static/css/main.34de6062.chunk.css",
-    "main.js": "/library-management/static/js/main.6cdc355f.chunk.js",
-    "main.js.map": "/library-management/static/js/main.6cdc355f.chunk.js.map",
+    "main.js": "/library-management/static/js/main.f37ef897.chunk.js",
+    "main.js.map": "/library-management/static/js/main.f37ef897.chunk.js.map",
     "runtime-main.js": "/library-management/static/js/runtime-main.0a702bf3.js",
     "runtime-main.js.map": "/library-management/static/js/runtime-main.0a702bf3.js.map",
     "static/css/2.266e55a5.chunk.css": "/library-management/static/css/2.266e55a5.chunk.css",
     "static/js/2.5447c632.chunk.js": "/library-management/static/js/2.5447c632.chunk.js",
     "static/js/2.5447c632.chunk.js.map": "/library-management/static/js/2.5447c632.chunk.js.map",
     "index.html": "/library-management/index.html",
-    "precache-manifest.6df941a584f2bb089b97f18f70691cc1.js": "/library-management/precache-manifest.6df941a584f2bb089b97f18f70691cc1.js",
+    "precache-manifest.4440cf52b5e7153003ad3e91e4e20d5f.js": "/library-management/precache-manifest.4440cf52b5e7153003ad3e91e4e20d5f.js",
     "service-worker.js": "/library-management/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/library-management/static/css/2.266e55a5.chunk.css.map",
     "static/css/main.34de6062.chunk.css.map": "/library-management/static/css/main.34de6062.chunk.css.map"
